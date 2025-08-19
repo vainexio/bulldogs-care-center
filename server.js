@@ -228,6 +228,8 @@ app.delete('/removeOtherSessions', async (req, res) => {
 app.post('/updateAccount', async (req, res) => {
   const { accountData, formData } = req.body;
   let accountHolder = formData.account_type == 'Doctor' ? doctors : formData.account_type == 'Patient' ? patients : null
+  //Demo
+  return res.status(404).json({ message: "You can't do this on a demo account!" });
   if (!accountHolder) return res.status(404).json({ message: "Invalid account type" });
   
   let account = await accountHolder.findOne({ email: accountData.email })
@@ -374,6 +376,10 @@ const generatePatientId = async () => {
 /* Doctor Backend */
 app.post('/registerPatient', async (req, res) => {
   try {
+
+    //Demo
+    return res.status(404).json({ message: "You can't do this on a demo account!" });
+    
     const { first_name, last_name, email, password, sex, birthdate, contact_number, patient_type, confirm_password } = req.body;
     console.log(req.body)
     
