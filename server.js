@@ -123,7 +123,7 @@ app.get('/currentAccount', async (req, res) => {
     });
   }
   
-  let currentSession = await fetch("https://bulldogs-care-center.glitch.me/session?type="+type, {
+  let currentSession = await fetch("https://bulldogs-care-center.onrender.com/session?type="+type, {
     headers: {
       cookie: req.headers.cookie || ""
     }
