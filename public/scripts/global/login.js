@@ -2,20 +2,32 @@ let selectedUserType = "";
 document.addEventListener("DOMContentLoaded", async function () {
   const doctorButton = document.getElementById("doctorButton");
   const patientButton = document.getElementById("patientButton");
+  const emailInput = document.getElementById("email");
+  const passwordInput = document.getElementById("password");
   const errorMessageElement = document.getElementById("error-message");
   const button = document.getElementById("loginButton");
 
   doctorButton.addEventListener("click", () => {
-    selectedUserType = "doctor";
-    doctorButton.classList.add("selected");
-    patientButton.classList.remove("selected");
-  });
+  selectedUserType = "doctor";
+  doctorButton.classList.add("selected");
+  patientButton.classList.remove("selected");
 
-  patientButton.addEventListener("click", () => {
-    selectedUserType = "patient";
-    patientButton.classList.add("selected");
-    doctorButton.classList.remove("selected");
-  });
+  // Update placeholder and value for doctor
+  emailInput.placeholder = "Try: doctor@gmail.com";
+  emailInput.value = "doctor@gmail.com";
+  passwordInput.value = "demopass";
+});
+
+patientButton.addEventListener("click", () => {
+  selectedUserType = "patient";
+  patientButton.classList.add("selected");
+  doctorButton.classList.remove("selected");
+
+  // Update placeholder and value for patient
+  emailInput.placeholder = "Try: patient@gmail.com";
+  emailInput.value = "patient@gmail.com";
+  passwordInput.value = "demopass";
+});
 
   document.getElementById("loginForm").addEventListener("submit", async (e) => {
     e.preventDefault();
